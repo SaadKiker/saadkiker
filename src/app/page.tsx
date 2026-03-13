@@ -36,13 +36,13 @@ export default function Home() {
         {/* Text */}
         <div className="max-w-xl text-center md:text-left">
           <h1 className="text-4xl md:text-7xl font-bold text-stone-800 mb-2 md:mb-3 leading-tight">
-            Hey, I'm Saad.
+            Hey, I&apos;m Saad.
           </h1>
           <p className="text-stone-500 text-base md:text-2xl leading-relaxed mb-2 md:mb-4">
-            I'm a full-stack engineer from Morocco, specializing in React, Next.js, and TypeScript.
+            I&apos;m a full-stack engineer from Morocco, specializing in React, Next.js, and TypeScript.
           </p>
           <p className="text-stone-500 text-base md:text-2xl leading-relaxed mb-5 md:mb-8">
-            Glad you're here! Have a look around.
+            Glad you&apos;re here! Have a look around.
           </p>
 
           <p className="text-xs md:text-sm font-semibold uppercase tracking-widest mb-2 md:mb-3" style={{ color: "#b5813c" }}>
