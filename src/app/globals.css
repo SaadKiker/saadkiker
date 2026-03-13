@@ -24,9 +24,3 @@ body {
   color: var(--foreground);
   font-family: var(--font-rubik), sans-serif;
 }
-
-@media (min-width: 768px) {
-  .hero-main {
-    flex-direction: row;
-  }
-}

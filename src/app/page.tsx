@@ -14,7 +14,7 @@ export default function Home() {
       </header>
 
       {/* Main */}
-      <main className="hero-main flex-1 flex flex-col items-center justify-center px-6 md:px-8 gap-6 md:gap-12 overflow-hidden">
+      <main className="flex-1 flex flex-col md:flex-row items-center justify-center px-6 md:px-8 gap-6 md:gap-12 overflow-hidden">
 
         {/* Photo */}
         <div
