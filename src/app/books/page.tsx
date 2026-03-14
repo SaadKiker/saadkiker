@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Header from "../components/Header";
 
 const currentlyReading = {
   title: "$100M Leads",
@@ -18,15 +19,7 @@ export default function Books() {
   return (
     <div className="h-screen flex flex-col overflow-hidden" style={{ backgroundColor: "#f9e5bc" }}>
 
-      {/* Header */}
-      <header className="flex justify-center items-center px-6 py-4 md:px-12 md:py-7 flex-shrink-0">
-        <nav className="flex gap-6 md:gap-12 text-base md:text-xl font-medium" style={{ color: "#b5813c" }}>
-          <a href="/" className="hover:opacity-70 transition-opacity">Hi</a>
-          <a href="/projects" className="hover:opacity-70 transition-opacity">PROJECTS</a>
-          <a href="/books" className="hover:opacity-70 transition-opacity">BOOKS</a>
-          <a href="/now" className="hover:opacity-70 transition-opacity">NOW</a>
-        </nav>
-      </header>
+      <Header />
 
       {/* Main */}
       <main className="flex-1 flex flex-col md:flex-row overflow-hidden">
