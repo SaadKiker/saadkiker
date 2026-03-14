@@ -6,7 +6,8 @@ export default function Home() {
 
       {/* Header */}
       <header className="flex justify-center items-center px-6 py-4 md:px-12 md:py-7">
-        <nav className="flex gap-6 md:gap-12 text-sm md:text-lg font-medium" style={{ color: "#b5813c" }}>
+        <nav className="flex gap-6 md:gap-12 text-base md:text-xl font-medium" style={{ color: "#b5813c" }}>
+          <a href="/" className="hover:opacity-70 transition-opacity">Hi</a>
           <a href="/projects" className="hover:opacity-70 transition-opacity">PROJECTS</a>
           <a href="/books" className="hover:opacity-70 transition-opacity">BOOKS</a>
           <a href="/now" className="hover:opacity-70 transition-opacity">NOW</a>
