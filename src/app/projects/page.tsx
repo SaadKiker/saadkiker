@@ -14,6 +14,7 @@ type Project = {
   link: string;
   linkLabel: string;
   images: string[];
+  stack?: string[];
   modalBg?: string;
   modalAccent?: string;
 };
@@ -36,7 +37,8 @@ const projects: Project[] = [
       "/projects/scanini4.png",
       "/projects/scanini5.png",
     ],
-    modalBg: "#fff0e8",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Neon", "Prisma", "Resend", "Cloudflare R2", "Vercel"],
+    modalBg: "#ffffff",
     modalAccent: "#e48a6c",
   },
   {
@@ -53,6 +55,9 @@ const projects: Project[] = [
       "/projects/myrituals2.png",
       "/projects/myrituals3.png",
     ],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "Prisma", "Vercel"],
+    modalBg: "#ffffff",
+    modalAccent: "#2e6690",
   },
 ];
 
@@ -112,122 +117,140 @@ export default function Projects() {
       {/* Modal */}
       {selected && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6"
-          style={{ backgroundColor: "rgba(0,0,0,0.55)" }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
+          style={{ backgroundColor: "rgba(0,0,0,0.6)" }}
           onClick={closeProject}
         >
           <div
-            className="relative w-full max-w-7xl rounded-2xl overflow-hidden flex flex-col md:flex-row"
-            style={{
-              backgroundColor: selected.modalBg ?? "#f9e5bc",
-              border: `2px solid ${selected.modalAccent ?? "#b5813c"}`,
-              minHeight: "70vh",
-              maxHeight: "80vh",
-            }}
+            className="relative w-full max-w-6xl rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-2xl"
+            style={{ backgroundColor: selected.modalBg ?? "#ffffff", maxHeight: "88vh" }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close */}
             <button
               onClick={closeProject}
-              className="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center rounded-full text-stone-500 hover:text-stone-800 transition-colors text-2xl leading-none"
+              className="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-stone-100 hover:bg-stone-200 transition-colors text-stone-500 hover:text-stone-800 text-xl leading-none"
             >
               ×
             </button>
 
             {/* Left — Info (40%) */}
-            <div className="md:w-2/5 flex flex-col p-7 md:p-9 overflow-y-auto">
-              <div className="flex-1">
-                <h2 className="text-3xl md:text-4xl font-bold leading-snug mb-1" style={{ color: selected.modalAccent ?? "#b5813c" }}>
+            <div
+              className="md:w-2/5 flex flex-col overflow-y-auto"
+              style={{ borderRight: `1px solid ${selected.modalAccent}28` }}
+            >
+              {/* Header */}
+              <div className="px-8 pt-8 pb-6" style={{ borderBottom: `1px solid ${selected.modalAccent}28` }}>
+                <p className="text-xs uppercase tracking-widest font-medium mb-2" style={{ color: selected.modalAccent }}>
+                  {selected.subtitle}
+                </p>
+                <h2 className="text-3xl font-bold leading-tight" style={{ color: selected.modalAccent }}>
                   {selected.name}
-                  {selected.subtitle && (
-                    <span className="block text-lg md:text-xl font-normal text-stone-500 mt-0.5">
-                      {selected.subtitle}
-                    </span>
-                  )}
                 </h2>
+              </div>
 
-                <div className="mt-5 space-y-3">
+              {/* Body */}
+              <div className="flex-1 px-8 py-7 space-y-5">
+                <div className="space-y-3">
                   {selected.description.split("\n\n").map((para, i) => (
-                    <p key={i} className="text-stone-600 text-lg leading-relaxed">
+                    <p key={i} className="text-stone-500 text-sm leading-relaxed">
                       {para}
                     </p>
                   ))}
                 </div>
 
-                {selected.link && (
+                {selected.stack && selected.stack.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {selected.stack.map((item) => (
+                      <span
+                        key={item}
+                        className="text-xs px-2.5 py-1 rounded-full"
+                        style={{ backgroundColor: `${selected.modalAccent}15`, color: selected.modalAccent }}
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Footer — link */}
+              {selected.link && (
+                <div className="px-8 py-5" style={{ borderTop: `1px solid ${selected.modalAccent}28` }}>
                   <a
                     href={selected.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 mt-10 text-base font-medium hover:opacity-70 transition-opacity"
-                    style={{ color: selected.modalAccent ?? "#b5813c" }}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium hover:opacity-60 transition-opacity"
+                    style={{ color: selected.modalAccent }}
                   >
-                    <span className="text-stone-400">Visit →</span>
-                    {selected.linkLabel || selected.link}
+                    <span className="text-stone-400 text-sm">Visit →</span>
+                    <span className="underline underline-offset-2">{selected.linkLabel || selected.link}</span>
                   </a>
-                )}
-              </div>
-
-              {selected.createdOn && (
-                <p className="text-sm text-stone-400 mt-6">Created on {selected.createdOn}</p>
+                </div>
               )}
             </div>
 
             {/* Right — Images (60%) */}
-            <div className="md:w-3/5 flex flex-col items-center justify-center px-4 py-6 gap-3">
-              {/* Arrows + image */}
-              <div className="flex items-center justify-center gap-4 w-full">
+            <div className="md:w-3/5 flex flex-col bg-stone-50" style={{ minHeight: "60vh" }}>
+              <div className="flex-1 flex items-center justify-center gap-3 px-4 py-6">
                 {selected.images.length > 1 && (
                   <button
                     onClick={prev}
-                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-3xl font-bold transition-opacity hover:opacity-60"
-                    style={{ color: selected.modalAccent ?? "#b5813c" }}
+                    className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-lg font-bold transition-all hover:scale-110"
+                    style={{ backgroundColor: `${selected.modalAccent}20`, color: selected.modalAccent }}
                   >
                     ‹
                   </button>
                 )}
 
-                <div className="flex-1 flex items-center justify-center overflow-hidden rounded-xl" style={{ border: `3px solid ${selected.modalAccent ?? "#d6b98c"}` }}>
+                <div className="flex-1 flex items-center justify-center">
                   {selected.images.length > 0 ? (
                     <img
                       key={imageIndex}
                       src={selected.images[imageIndex]}
                       alt={`${selected.name} screenshot ${imageIndex + 1}`}
-                      className="w-full h-auto object-contain cursor-zoom-in"
-                      style={{ opacity: fading ? 0 : 1, transition: "opacity 0.2s ease" }}
+                      className="max-w-full max-h-full object-contain rounded-xl cursor-zoom-in"
+                      style={{
+                        opacity: fading ? 0 : 1,
+                        transition: "opacity 0.2s ease",
+                        boxShadow: "0 4px 24px rgba(0,0,0,0.1)",
+                      }}
                       onClick={() => setLightbox(true)}
                     />
                   ) : (
-                    <p className="text-stone-400 text-sm py-16">No images yet</p>
+                    <p className="text-stone-400 text-sm">No images yet</p>
                   )}
                 </div>
 
                 {selected.images.length > 1 && (
                   <button
                     onClick={next}
-                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-3xl font-bold transition-opacity hover:opacity-60"
-                    style={{ color: selected.modalAccent ?? "#b5813c" }}
+                    className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-lg font-bold transition-all hover:scale-110"
+                    style={{ backgroundColor: `${selected.modalAccent}20`, color: selected.modalAccent }}
                   >
                     ›
                   </button>
                 )}
               </div>
 
-              {/* Dots — right below image */}
               {selected.images.length > 1 && (
-                <div className="flex justify-center gap-2 pt-2">
+                <div className="flex justify-center items-center gap-2 pb-5">
                   {selected.images.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setImageIndex(i)}
-                      className="w-2 h-2 rounded-full transition-opacity"
-                      style={{ backgroundColor: selected.modalAccent ?? "#b5813c", opacity: i === imageIndex ? 1 : 0.35 }}
+                      className="h-2 rounded-full transition-all duration-300"
+                      style={{
+                        width: i === imageIndex ? "20px" : "8px",
+                        backgroundColor: selected.modalAccent ?? "#b5813c",
+                        opacity: i === imageIndex ? 1 : 0.3,
+                      }}
                     />
                   ))}
                 </div>
               )}
             </div>
-
           </div>
         </div>
       )}
