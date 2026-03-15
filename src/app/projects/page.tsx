@@ -122,8 +122,8 @@ export default function Projects() {
           onClick={closeProject}
         >
           <div
-            className="relative w-full max-w-6xl rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-2xl"
-            style={{ backgroundColor: selected.modalBg ?? "#ffffff", maxHeight: "88vh" }}
+            className="relative w-full max-w-7xl rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-2xl"
+            style={{ backgroundColor: selected.modalBg ?? "#ffffff", maxHeight: "92vh" }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close */}
@@ -141,12 +141,12 @@ export default function Projects() {
             >
               {/* Header */}
               <div className="px-8 pt-8 pb-6" style={{ borderBottom: `1px solid ${selected.modalAccent}28` }}>
-                <p className="text-xs uppercase tracking-widest font-medium mb-2" style={{ color: selected.modalAccent }}>
-                  {selected.subtitle}
-                </p>
-                <h2 className="text-3xl font-bold leading-tight" style={{ color: selected.modalAccent }}>
+                <h2 className="text-4xl font-bold leading-tight" style={{ color: selected.modalAccent }}>
                   {selected.name}
                 </h2>
+                <p className="text-xs uppercase tracking-widest font-medium mt-2 text-stone-500">
+                  {selected.subtitle}
+                </p>
               </div>
 
               {/* Body */}
@@ -192,7 +192,7 @@ export default function Projects() {
             </div>
 
             {/* Right — Images (60%) */}
-            <div className="md:w-3/5 flex flex-col bg-stone-50" style={{ minHeight: "60vh" }}>
+            <div className="md:w-3/5 flex flex-col bg-stone-50" style={{ minHeight: "70vh" }}>
               <div className="flex-1 flex items-center justify-center gap-3 px-4 py-6">
                 {selected.images.length > 1 && (
                   <button
