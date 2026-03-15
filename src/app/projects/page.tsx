@@ -43,12 +43,16 @@ const projects: Project[] = [
     id: "rituals",
     name: "MyRituals",
     subtitle: "Minimal Habit & Ritual Tracker",
-    cover: "/projects/MyRitualsCover.png",
+    cover: "/projects/MyritualsCover.png",
     description: "MyRituals is a minimal web platform designed to help users track habits, goals, and daily routines without the complexity of traditional productivity apps.\n\nI designed and built the system around three simple areas, goals, habits, and a structured daily schedule, focusing on clarity and a distraction free interface that encourages consistency and long term discipline.",
     createdOn: "Jan 31st, 2026",
     link: "https://myrituals.vercel.app",
     linkLabel: "MyRituals.vercel.app",
-    images: [],
+    images: [
+      "/projects/myrituals1.png",
+      "/projects/myrituals2.png",
+      "/projects/myrituals3.png",
+    ],
   },
 ];
 
