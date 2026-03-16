@@ -254,7 +254,7 @@ export default function Projects() {
         >
           <div
             className="relative w-full max-w-7xl rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-2xl"
-            style={{ backgroundColor: selected.modalBg ?? "#ffffff", maxHeight: "92vh" }}
+            style={{ backgroundColor: selected.modalBg ?? "#ffffff", maxHeight: "clamp(500px, 80vh, 92vh)" }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close */}
@@ -267,56 +267,64 @@ export default function Projects() {
 
             {/* Left — Info (40%) */}
             <div
-              className="md:w-2/5 flex flex-col overflow-y-auto"
+              className="md:w-2/5 flex flex-col relative overflow-hidden"
               style={{ borderRight: `1px solid ${selected.modalAccent}28` }}
             >
-              {/* Header */}
-              <div className="px-8 pt-8 pb-6">
-                <h2 className="text-4xl font-bold leading-tight" style={{ color: selected.modalAccent }}>
-                  {selected.name}
-                </h2>
-              </div>
-
-              {/* Body */}
-              <div className="flex-1 px-8 py-7 space-y-5">
-                <div className="space-y-3">
-                  {selected.description.split("\n\n").map((para, i) => (
-                    <p key={i} className="text-stone-500 text-base leading-relaxed">
-                      {para}
-                    </p>
-                  ))}
+              <div className="flex-1 overflow-y-auto flex flex-col">
+                {/* Header */}
+                <div className="px-8 pt-8 pb-6">
+                  <h2 className="text-4xl font-bold leading-tight" style={{ color: selected.modalAccent }}>
+                    {selected.name}
+                  </h2>
                 </div>
 
-                {selected.stack && selected.stack.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {selected.stack.map((item) => (
-                      <span
-                        key={item}
-                        className="text-sm px-2.5 py-1 rounded-full"
-                        style={{ backgroundColor: `${selected.modalAccent}15`, color: selected.modalAccent }}
-                      >
-                        {item}
-                      </span>
+                {/* Body */}
+                <div className="flex-1 px-8 py-7 space-y-5">
+                  <div className="space-y-3">
+                    {selected.description.split("\n\n").map((para, i) => (
+                      <p key={i} className="text-stone-500 text-base leading-relaxed">
+                        {para}
+                      </p>
                     ))}
+                  </div>
+
+                  {selected.stack && selected.stack.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {selected.stack.map((item) => (
+                        <span
+                          key={item}
+                          className="text-sm px-2.5 py-1 rounded-full"
+                          style={{ backgroundColor: `${selected.modalAccent}15`, color: selected.modalAccent }}
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Footer — link */}
+                {selected.link && (
+                  <div className="px-8 py-5" style={{ borderTop: `1px solid ${selected.modalAccent}28` }}>
+                    <a
+                      href={selected.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium hover:opacity-60 transition-opacity"
+                      style={{ color: selected.modalAccent }}
+                    >
+                      <span className="text-stone-400 text-sm">Visit →</span>
+                      <span className="underline underline-offset-2">{selected.linkLabel || selected.link}</span>
+                    </a>
                   </div>
                 )}
               </div>
 
-              {/* Footer — link */}
-              {selected.link && (
-                <div className="px-8 py-5" style={{ borderTop: `1px solid ${selected.modalAccent}28` }}>
-                  <a
-                    href={selected.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium hover:opacity-60 transition-opacity"
-                    style={{ color: selected.modalAccent }}
-                  >
-                    <span className="text-stone-400 text-sm">Visit →</span>
-                    <span className="underline underline-offset-2">{selected.linkLabel || selected.link}</span>
-                  </a>
-                </div>
-              )}
+              {/* Scroll hint gradient — mobile only */}
+              <div
+                className="md:hidden pointer-events-none absolute bottom-0 left-0 right-0 h-10"
+                style={{ background: `linear-gradient(to bottom, transparent, ${selected.modalBg ?? "#ffffff"})` }}
+              />
             </div>
 
             {/* Right — Images (60%) */}

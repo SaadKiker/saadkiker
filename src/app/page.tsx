@@ -39,20 +39,22 @@ export default function Home() {
             Glad you&apos;re here! Have a look around.
           </p>
 
-          <p className="text-xs md:text-sm font-semibold uppercase tracking-widest mb-1.5 md:mb-3" style={{ color: "#b5813c" }}>
-            Currently
-          </p>
-          <div className="space-y-1 md:space-y-2 text-sm md:text-base inline-block text-left" style={{ borderLeft: "2px solid #b5813c", paddingLeft: "1rem" }}>
-            <p>
-              <span className="font-semibold text-stone-700">building</span>
-              <span className="text-stone-300 mx-2">—</span>
-              <a href="https://scanini.ma" target="_blank" rel="noopener noreferrer" className="text-stone-500 underline underline-offset-2 hover:text-stone-700 transition-colors">scanini.ma</a>
+          <div className="inline-block text-left">
+            <p className="text-xs md:text-sm font-semibold uppercase tracking-widest mb-1.5 md:mb-3" style={{ color: "#b5813c" }}>
+              Currently
             </p>
-            <p>
-              <span className="font-semibold text-stone-700">reading</span>
-              <span className="text-stone-300 mx-2">—</span>
-              <span className="text-stone-500">$100M Leads — Alex Hormozi</span>
-            </p>
+            <div className="space-y-1 md:space-y-2 text-sm md:text-base" style={{ borderLeft: "2px solid #b5813c", paddingLeft: "1rem" }}>
+              <p>
+                <span className="font-semibold text-stone-700">building</span>
+                <span className="text-stone-300 mx-2">—</span>
+                <a href="https://scanini.ma" target="_blank" rel="noopener noreferrer" className="text-stone-500 underline underline-offset-2 hover:text-stone-700 transition-colors">scanini.ma</a>
+              </p>
+              <p>
+                <span className="font-semibold text-stone-700">reading</span>
+                <span className="text-stone-300 mx-2">—</span>
+                <span className="text-stone-500">$100M Leads — Alex Hormozi</span>
+              </p>
+            </div>
           </div>
         </div>
 
