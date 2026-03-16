@@ -17,15 +17,15 @@ const booksRead = [
 
 export default function Books() {
   return (
-    <div className="h-screen flex flex-col overflow-hidden" style={{ backgroundColor: "#f9e5bc" }}>
+    <div className="h-[100dvh] flex flex-col md:overflow-hidden" style={{ backgroundColor: "#f9e5bc" }}>
 
       <Header />
 
       {/* Main */}
-      <main className="flex-1 flex flex-col md:flex-row overflow-hidden">
+      <main className="flex-1 flex flex-col md:flex-row overflow-y-auto md:overflow-hidden">
 
         {/* Left — Currently Reading */}
-        <div className="flex-1 flex flex-col items-center justify-center gap-5 px-8 py-6 md:py-0">
+        <div className="flex-none md:flex-1 flex flex-col items-center justify-center gap-5 px-8 py-6 md:py-0">
           <p className="text-2xl md:text-3xl font-bold text-center mb-4" style={{ color: "#6b4c1f" }}>
             Currently Reading
           </p>
@@ -56,11 +56,11 @@ export default function Books() {
 
 
         {/* Right — Books Read */}
-        <div className="flex-1 flex flex-col overflow-hidden px-8 py-6 md:py-8">
+        <div className="flex-none md:flex-1 flex flex-col md:overflow-hidden px-8 py-6 md:py-8">
           <p className="text-2xl md:text-3xl font-bold text-center mb-12 flex-shrink-0" style={{ color: "#6b4c1f" }}>
             Read
           </p>
-          <div className="overflow-y-auto flex-1 pr-1">
+          <div className="md:overflow-y-auto md:flex-1 pr-1">
             <div className="grid grid-cols-2 gap-6">
               {booksRead.map((book) => (
                 <div key={book.cover} className="flex flex-col items-center gap-2 text-center">

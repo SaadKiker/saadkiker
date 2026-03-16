@@ -191,7 +191,7 @@ export default function Projects() {
 
       {/* Grid */}
       <main className="flex-1 overflow-y-auto px-10 md:px-20 pt-14 pb-12">
-        <div className="grid grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {projects.map((project) => (
             <div
               key={project.id}
@@ -221,7 +221,7 @@ export default function Projects() {
               </div>
 
               {/* Card body */}
-              <div className="flex flex-col gap-2.5 px-4 py-3.5" style={{ backgroundColor: "#fdf3e0" }}>
+              <div className="flex flex-col gap-2.5 px-4 py-3.5 flex-1" style={{ backgroundColor: "#fdf3e0" }}>
                 {/* Tech pills */}
                 {project.mainStack && project.mainStack.length > 0 && (
                   <div className="flex flex-wrap gap-1.5">
@@ -275,16 +275,13 @@ export default function Projects() {
                 <h2 className="text-4xl font-bold leading-tight" style={{ color: selected.modalAccent }}>
                   {selected.name}
                 </h2>
-                <p className="text-xs uppercase tracking-widest font-medium mt-2 text-stone-500">
-                  {selected.subtitle}
-                </p>
               </div>
 
               {/* Body */}
               <div className="flex-1 px-8 py-7 space-y-5">
                 <div className="space-y-3">
                   {selected.description.split("\n\n").map((para, i) => (
-                    <p key={i} className="text-stone-500 text-sm leading-relaxed">
+                    <p key={i} className="text-stone-500 text-base leading-relaxed">
                       {para}
                     </p>
                   ))}
@@ -295,7 +292,7 @@ export default function Projects() {
                     {selected.stack.map((item) => (
                       <span
                         key={item}
-                        className="text-xs px-2.5 py-1 rounded-full"
+                        className="text-sm px-2.5 py-1 rounded-full"
                         style={{ backgroundColor: `${selected.modalAccent}15`, color: selected.modalAccent }}
                       >
                         {item}
@@ -323,7 +320,7 @@ export default function Projects() {
             </div>
 
             {/* Right — Images (60%) */}
-            <div className="md:w-3/5 flex flex-col bg-stone-50" style={{ minHeight: "70vh" }}>
+            <div className="md:w-3/5 flex flex-col bg-stone-50" style={{ minHeight: "clamp(160px, 30vh, 70vh)" }}>
               <div className="flex-1 flex items-center justify-center gap-3 px-4 py-6">
                 {selected.images.length > 1 && (
                   <button

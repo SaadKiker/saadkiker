@@ -13,7 +13,7 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="flex justify-center items-center px-6 py-4 md:px-12 md:py-7 flex-shrink-0">
+    <header className="flex justify-center items-center px-6 py-2 md:px-12 md:py-7 flex-shrink-0">
       <nav className="flex gap-6 md:gap-12 text-base md:text-xl font-medium" style={{ color: "#b5813c" }}>
         {tabs.map((tab) => {
           const isActive = pathname === tab.href;

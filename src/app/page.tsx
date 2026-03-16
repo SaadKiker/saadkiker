@@ -3,12 +3,12 @@ import Header from "./components/Header";
 
 export default function Home() {
   return (
-    <div className="h-screen flex flex-col overflow-hidden" style={{ backgroundColor: "#f9e5bc" }}>
+    <div className="h-[100dvh] flex flex-col overflow-hidden" style={{ backgroundColor: "#f9e5bc" }}>
 
       <Header />
 
       {/* Main */}
-      <main className="flex-1 flex flex-col md:flex-row items-center justify-center px-6 md:px-8 gap-6 md:gap-12 overflow-hidden">
+      <main className="flex-1 flex flex-col md:flex-row items-center justify-center px-6 md:px-8 gap-4 md:gap-12 overflow-hidden">
 
         {/* Photo */}
         <div
@@ -29,17 +29,17 @@ export default function Home() {
 
         {/* Text */}
         <div className="max-w-xl text-center md:text-left">
-          <h1 className="text-4xl md:text-7xl font-bold text-stone-800 mb-2 md:mb-3 leading-tight">
+          <h1 className="text-3xl md:text-7xl font-bold text-stone-800 mb-1 md:mb-3 leading-tight">
             Hey, I&apos;m Saad.
           </h1>
-          <p className="text-stone-500 text-base md:text-2xl leading-relaxed mb-2 md:mb-4">
+          <p className="text-stone-500 text-sm md:text-2xl leading-relaxed mb-1 md:mb-4">
             I&apos;m a full-stack engineer from Morocco, specializing in React, Next.js, and TypeScript.
           </p>
-          <p className="text-stone-500 text-base md:text-2xl leading-relaxed mb-5 md:mb-8">
+          <p className="text-stone-500 text-sm md:text-2xl leading-relaxed mb-4 md:mb-8">
             Glad you&apos;re here! Have a look around.
           </p>
 
-          <p className="text-xs md:text-sm font-semibold uppercase tracking-widest mb-2 md:mb-3" style={{ color: "#b5813c" }}>
+          <p className="text-xs md:text-sm font-semibold uppercase tracking-widest mb-1.5 md:mb-3" style={{ color: "#b5813c" }}>
             Currently
           </p>
           <div className="space-y-1 md:space-y-2 text-sm md:text-base inline-block text-left" style={{ borderLeft: "2px solid #b5813c", paddingLeft: "1rem" }}>
@@ -59,7 +59,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="flex justify-center items-center gap-6 md:gap-8 py-4 md:py-5">
+      <footer className="flex justify-center items-center gap-6 md:gap-8 py-2 md:py-5">
         {/* GitHub */}
         <a href="https://github.com/SaadKiker" target="_blank" rel="noopener noreferrer" className="hover:opacity-60 transition-opacity" style={{ color: "#b5813c" }}>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
