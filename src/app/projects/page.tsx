@@ -59,6 +59,91 @@ const projects: Project[] = [
     modalBg: "#ffffff",
     modalAccent: "#2e6690",
   },
+  {
+    id: "hdoc",
+    name: "H-DOC",
+    subtitle: "Medical Record & Patient Management System",
+    cover: "/projects/hdocCover.png",
+    description:
+      "H-DOC is a full stack medical record and patient management platform designed for clinics and healthcare environments.\n\nThe system allows healthcare staff to manage patient profiles, appointments, prescriptions, and medical forms from a centralized dashboard while keeping records structured and easy to access.\n\nThe platform includes role based access for administrators, doctors, and agents, dynamic medical form management, appointment tracking, and patient monitoring tools. It was built with a Spring Boot backend connected to a PostgreSQL database and a React based frontend focused on clarity and usability.",
+    createdOn: "Feb 15th, 2026",
+    link: "https://github.com/SaadKiker/H-DOC",
+    linkLabel: "GitHub Repository",
+    images: [
+      "/projects/hdoc1.png",
+      "/projects/hdoc2.png",
+      "/projects/hdoc3.png",
+      "/projects/hdoc4.png",
+      "/projects/hdoc5.png",
+      "/projects/hdoc6.png"
+    ],
+    stack: [
+      "Spring Boot",
+      "Java",
+      "React",
+      "TypeScript",
+      "Vite",
+      "PostgreSQL",
+      "Supabase",
+      "Docker"
+    ],
+    modalBg: "#ffffff",
+    modalAccent: "#1e513b",
+  },
+  {
+    id: "sacros",
+    name: "Sacros",
+    subtitle: "Offline Macro Nutrition Tracker",
+    cover: "/projects/sacrosCover.png",
+    description:
+      "Sacros is a minimal desktop application designed to help users track their daily macronutrients in a fast and distraction free way.\n\nThe application focuses only on today's nutrition intake, allowing users to log foods across different meals such as breakfast, lunch, snacks, and dinner while automatically calculating protein, carbohydrates, fats, and total calories for the day.\n\nThe system includes a personal food database with customizable units, automatic macro calculations per meal, and a clean interface optimized for quick daily use. Sacros was built as an offline first application using Tauri and React, allowing the app to run locally without accounts, cloud services, or internet connectivity.",
+    createdOn: "Mar 10th, 2026",
+    link: "https://sacros-site.vercel.app",
+    linkLabel: "sacros-site.vercel.app",
+    images: [
+      "/projects/sacros1.png",
+      "/projects/sacros2.png",
+      "/projects/sacros3.png"
+    ],
+    stack: [
+      "Tauri",
+      "Rust",
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    modalBg: "#f2f6f3",
+    modalAccent: "#5c7a66",
+  },
+  {
+    id: "cookshare",
+    name: "CookShare",
+    subtitle: "Community Recipe Sharing Platform",
+    cover: "/projects/cookshareCover.png",
+    description:
+      "CookShare is a web platform designed for sharing and discovering recipes within a community of food enthusiasts.\n\nThe platform allows users to create and manage their own recipes, explore meals from other users, and interact through likes, comments, and favorites. Recipes can be organized and filtered by category, making it easy to browse different types of dishes.\n\nThe system includes secure user authentication, recipe management tools, and social engagement features, all built on a Spring Boot backend with server rendered pages using Thymeleaf and a MySQL database.",
+    createdOn: "Dec 12th, 2025",
+    link: "https://github.com/SaadKiker/CookShare",
+    linkLabel: "GitHub Repository",
+    images: [
+      "/projects/cookshare1.png",
+      "/projects/cookshare2.png",
+      "/projects/cookshare3.png",
+      "/projects/cookshare4.png"
+    ],
+    stack: [
+      "Spring Boot",
+      "Java",
+      "Thymeleaf",
+      "MySQL",
+      "Spring Security",
+      "Spring Data JPA",
+      "Hibernate",
+      "Lombok"
+    ],
+    modalBg: "#ffffff",
+    modalAccent: "#f27971",
+  },
 ];
 
 export default function Projects() {
@@ -92,21 +177,21 @@ export default function Projects() {
       <Header />
 
       {/* Grid */}
-      <main className="flex-1 overflow-y-auto px-4 md:px-6 pt-14 pb-8">
-        <div className="grid grid-cols-2 gap-x-36 gap-y-10 max-w-7xl mx-auto">
+      <main className="flex-1 overflow-y-auto px-10 md:px-20 pt-14 pb-12">
+        <div className="grid grid-cols-2 gap-8 max-w-5xl mx-auto">
           {projects.map((project) => (
             <div
               key={project.id}
               onClick={() => openProject(project)}
-              className="cursor-pointer group rounded-2xl overflow-hidden"
-              style={{ border: "2px solid #b5813c" }}
+              className="cursor-pointer rounded-2xl transition-all duration-200 hover:[transform:translate(4px,-4px)] hover:[box-shadow:-7px_7px_0_#b5813c]"
+              style={{ border: "1.5px solid #b5813c" }}
             >
-              <div className="relative w-full" style={{ aspectRatio: "1200/630" }}>
+              <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "1200/630" }}>
                 <Image
                   src={project.cover}
                   alt={project.name}
                   fill
-                  className="object-cover transition-opacity group-hover:opacity-90"
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -140,7 +225,7 @@ export default function Projects() {
               style={{ borderRight: `1px solid ${selected.modalAccent}28` }}
             >
               {/* Header */}
-              <div className="px-8 pt-8 pb-6" style={{ borderBottom: `1px solid ${selected.modalAccent}28` }}>
+              <div className="px-8 pt-8 pb-6">
                 <h2 className="text-4xl font-bold leading-tight" style={{ color: selected.modalAccent }}>
                   {selected.name}
                 </h2>
