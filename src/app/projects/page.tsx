@@ -10,11 +10,13 @@ type Project = {
   subtitle: string;
   cover: string;
   description: string;
+  shortDescription: string;
   createdOn: string;
   link: string;
   linkLabel: string;
   images: string[];
   stack?: string[];
+  mainStack?: string[];
   modalBg?: string;
   modalAccent?: string;
 };
@@ -27,6 +29,7 @@ const projects: Project[] = [
     cover: "/projects/scaniniCover.png",
     description:
       "Scanini is a production ready SaaS web platform developed for restaurants to manage digital menus, online ordering, and business configuration.\n\nI built the system end to end, including the public customer facing menu, a secure admin dashboard, and backend logic designed for multi tenant usage.\n\nThe platform includes authentication, role based access, dynamic content management, and a responsive UI, with a strong focus on scalability, performance, and maintainable architecture.",
+    shortDescription: "A SaaS platform for restaurants to manage digital menus, online ordering, and business configuration through a public menu and a secure admin dashboard.",
     createdOn: "Jan 1st, 2026",
     link: "https://scanini.ma",
     linkLabel: "scanini.ma",
@@ -37,7 +40,8 @@ const projects: Project[] = [
       "/projects/scanini4.png",
       "/projects/scanini5.png",
     ],
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Neon", "Prisma", "Resend", "Cloudflare R2", "Vercel"],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "Neon", "Prisma", "Resend", "Cloudflare R2", "Vercel"],
+    mainStack: ["Next.js", "PostgreSQL", "Vercel"],
     modalBg: "#ffffff",
     modalAccent: "#e48a6c",
   },
@@ -47,6 +51,7 @@ const projects: Project[] = [
     subtitle: "Minimal Habit & Ritual Tracker",
     cover: "/projects/MyritualsCover.png",
     description: "MyRituals is a minimal web platform designed to help users track habits, goals, and daily routines without the complexity of traditional productivity apps.\n\nI designed and built the system around three simple areas, goals, habits, and a structured daily schedule, focusing on clarity and a distraction free interface that encourages consistency and long term discipline.",
+    shortDescription: "A minimal habit and ritual tracker built around three areas — goals, habits, and a daily schedule — with a distraction-free interface built for consistency.",
     createdOn: "Jan 31st, 2026",
     link: "https://myrituals.vercel.app",
     linkLabel: "MyRituals.vercel.app",
@@ -55,7 +60,8 @@ const projects: Project[] = [
       "/projects/myrituals2.png",
       "/projects/myrituals3.png",
     ],
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "Prisma", "Vercel"],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "Vercel"],
+    mainStack: ["Next.js", "PostgreSQL", "Vercel"],
     modalBg: "#ffffff",
     modalAccent: "#2e6690",
   },
@@ -66,6 +72,7 @@ const projects: Project[] = [
     cover: "/projects/hdocCover.png",
     description:
       "H-DOC is a full stack medical record and patient management platform designed for clinics and healthcare environments.\n\nThe system allows healthcare staff to manage patient profiles, appointments, prescriptions, and medical forms from a centralized dashboard while keeping records structured and easy to access.\n\nThe platform includes role based access for administrators, doctors, and agents, dynamic medical form management, appointment tracking, and patient monitoring tools. It was built with a Spring Boot backend connected to a PostgreSQL database and a React based frontend focused on clarity and usability.",
+    shortDescription: "A full-stack platform for clinics to manage patient records, appointments, and prescriptions, with role-based access for admins, doctors, and agents.",
     createdOn: "Feb 15th, 2026",
     link: "https://github.com/SaadKiker/H-DOC",
     linkLabel: "GitHub Repository",
@@ -87,6 +94,7 @@ const projects: Project[] = [
       "Supabase",
       "Docker"
     ],
+    mainStack: ["Spring Boot", "React", "PostgreSQL"],
     modalBg: "#ffffff",
     modalAccent: "#1e513b",
   },
@@ -97,6 +105,7 @@ const projects: Project[] = [
     cover: "/projects/cookshareCover.png",
     description:
       "CookShare is a web platform designed for sharing and discovering recipes within a community of food enthusiasts.\n\nThe platform allows users to create and manage their own recipes, explore meals from other users, and interact through likes, comments, and favorites. Recipes can be organized and filtered by category, making it easy to browse different types of dishes.\n\nThe system includes secure user authentication, recipe management tools, and social engagement features, all built on a Spring Boot backend with server rendered pages using Thymeleaf and a MySQL database.",
+    shortDescription: "A community recipe platform where users can publish their own recipes, discover meals from others, and interact through likes, comments, and favorites.",
     createdOn: "Dec 12th, 2025",
     link: "https://github.com/SaadKiker/CookShare",
     linkLabel: "GitHub Repository",
@@ -116,6 +125,7 @@ const projects: Project[] = [
       "Hibernate",
       "Lombok"
     ],
+    mainStack: ["Spring Boot", "Thymeleaf", "MySQL"],
     modalBg: "#ffffff",
     modalAccent: "#f27971",
   },
@@ -126,6 +136,7 @@ const projects: Project[] = [
     cover: "/projects/sacrosCover.png",
     description:
       "Sacros is a minimal desktop application designed to help users track their daily macronutrients in a fast and distraction free way.\n\nThe application focuses only on today's nutrition intake, allowing users to log foods across different meals such as breakfast, lunch, snacks, and dinner while automatically calculating protein, carbohydrates, fats, and total calories for the day.\n\nThe system includes a personal food database with customizable units, automatic macro calculations per meal, and a clean interface optimized for quick daily use. Sacros was built as an offline first application using Tauri and React, allowing the app to run locally without accounts, cloud services, or internet connectivity.",
+    shortDescription: "An offline desktop app for tracking daily macros and calories across meals, with a personal food database and no accounts or internet required.",
     createdOn: "Mar 10th, 2026",
     link: "https://sacros-site.vercel.app",
     linkLabel: "sacros-site.vercel.app",
@@ -141,6 +152,7 @@ const projects: Project[] = [
       "TypeScript",
       "Tailwind CSS"
     ],
+    mainStack: ["Tauri", "Rust", "React"],
     modalBg: "#ffffff",
     modalAccent: "#4f6c9f",
   },
@@ -179,21 +191,54 @@ export default function Projects() {
 
       {/* Grid */}
       <main className="flex-1 overflow-y-auto px-10 md:px-20 pt-14 pb-12">
-        <div className="grid grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-3 gap-6 max-w-6xl mx-auto">
           {projects.map((project) => (
             <div
               key={project.id}
               onClick={() => openProject(project)}
-              className="cursor-pointer rounded-2xl transition-all duration-200 hover:[transform:translate(4px,-4px)] hover:[box-shadow:-7px_7px_0_#b5813c]"
-              style={{ border: "1.5px solid #b5813c" }}
+              className="cursor-pointer rounded-2xl overflow-hidden flex flex-col transition-all duration-200"
+              style={{
+                border: `1.5px solid ${project.modalAccent}`,
+                transition: "transform 0.2s, box-shadow 0.2s",
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLDivElement).style.transform = "translate(4px, -4px)";
+                (e.currentTarget as HTMLDivElement).style.boxShadow = `-7px 7px 0 ${project.modalAccent}`;
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLDivElement).style.transform = "";
+                (e.currentTarget as HTMLDivElement).style.boxShadow = "";
+              }}
             >
-              <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "1200/630" }}>
+              {/* Cover image */}
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: "1200/630" }}>
                 <Image
                   src={project.cover}
                   alt={project.name}
                   fill
                   className="object-cover"
                 />
+              </div>
+
+              {/* Card body */}
+              <div className="flex flex-col gap-2.5 px-4 py-3.5" style={{ backgroundColor: "#fdf3e0" }}>
+                {/* Tech pills */}
+                {project.mainStack && project.mainStack.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.mainStack.map((item) => (
+                      <span
+                        key={item}
+                        className="text-xs px-2 py-0.5 rounded-full font-medium"
+                        style={{ backgroundColor: `${project.modalAccent}22`, color: project.modalAccent }}
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Description */}
+                <p className="text-sm text-stone-500 leading-relaxed">{project.shortDescription}</p>
               </div>
             </div>
           ))}
