@@ -99,6 +99,33 @@ const projects: Project[] = [
     modalAccent: "#1e513b",
   },
   {
+    id: "sacros",
+    name: "Sacros",
+    subtitle: "Offline Macro Nutrition Tracker",
+    cover: "/projects/sacrosCover.png",
+    description:
+      "Sacros is a minimal desktop application designed to help users track their daily macronutrients in a fast and distraction free way.\n\nThe application focuses only on today's nutrition intake, allowing users to log foods across different meals such as breakfast, lunch, snacks, and dinner while automatically calculating protein, carbohydrates, fats, and total calories for the day.\n\nThe system includes a personal food database with customizable units, automatic macro calculations per meal, and a clean interface optimized for quick daily use. Sacros was built as an offline first application using Tauri and React, allowing the app to run locally without accounts, cloud services, or internet connectivity.",
+    shortDescription: "An offline desktop app for tracking daily macros and calories across meals, with a personal food database and no accounts or internet required.",
+    createdOn: "Mar 10th, 2026",
+    link: "https://sacros-site.vercel.app",
+    linkLabel: "sacros-site.vercel.app",
+    images: [
+      "/projects/sacros1.png",
+      "/projects/sacros2.png",
+      "/projects/sacros3.png"
+    ],
+    stack: [
+      "Tauri",
+      "Rust",
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    mainStack: ["Tauri", "Rust", "React"],
+    modalBg: "#ffffff",
+    modalAccent: "#4f6c9f",
+  },
+  {
     id: "cookshare",
     name: "CookShare",
     subtitle: "Community Recipe Sharing Platform",
@@ -128,33 +155,6 @@ const projects: Project[] = [
     mainStack: ["Spring Boot", "Thymeleaf", "MySQL"],
     modalBg: "#ffffff",
     modalAccent: "#f27971",
-  },
-  {
-    id: "sacros",
-    name: "Sacros",
-    subtitle: "Offline Macro Nutrition Tracker",
-    cover: "/projects/sacrosCover.png",
-    description:
-      "Sacros is a minimal desktop application designed to help users track their daily macronutrients in a fast and distraction free way.\n\nThe application focuses only on today's nutrition intake, allowing users to log foods across different meals such as breakfast, lunch, snacks, and dinner while automatically calculating protein, carbohydrates, fats, and total calories for the day.\n\nThe system includes a personal food database with customizable units, automatic macro calculations per meal, and a clean interface optimized for quick daily use. Sacros was built as an offline first application using Tauri and React, allowing the app to run locally without accounts, cloud services, or internet connectivity.",
-    shortDescription: "An offline desktop app for tracking daily macros and calories across meals, with a personal food database and no accounts or internet required.",
-    createdOn: "Mar 10th, 2026",
-    link: "https://sacros-site.vercel.app",
-    linkLabel: "sacros-site.vercel.app",
-    images: [
-      "/projects/sacros1.png",
-      "/projects/sacros2.png",
-      "/projects/sacros3.png"
-    ],
-    stack: [
-      "Tauri",
-      "Rust",
-      "React",
-      "TypeScript",
-      "Tailwind CSS"
-    ],
-    mainStack: ["Tauri", "Rust", "React"],
-    modalBg: "#ffffff",
-    modalAccent: "#4f6c9f",
   },
 
 ];
@@ -216,6 +216,8 @@ export default function Projects() {
                   src={project.cover}
                   alt={project.name}
                   fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover"
                 />
               </div>

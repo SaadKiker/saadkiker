@@ -23,6 +23,8 @@ export default function Home() {
             src="/me.PNG"
             alt="Saad"
             fill
+            priority
+            sizes="(max-width: 768px) 40vw, 46vh"
             className="object-cover"
           />
         </div>

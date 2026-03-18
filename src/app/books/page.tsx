@@ -41,6 +41,8 @@ export default function Books() {
               src={currentlyReading.cover}
               alt={currentlyReading.title}
               fill
+              priority
+              sizes="(max-width: 768px) 200px, 32vw"
               className="object-cover"
             />
           </div>
@@ -76,6 +78,7 @@ export default function Books() {
                       src={book.cover}
                       alt={book.title}
                       fill
+                      sizes="(max-width: 768px) 140px, 20vw"
                       className="object-cover"
                     />
                   </div>
