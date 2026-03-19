@@ -160,7 +160,7 @@ const projects: Project[] = [
     id: "tazkiyati",
     name: "Tazkiyati",
     subtitle: "Islamic Heart Purity Tracker",
-    cover: "/projects/tazkiyatiCover.png",
+    cover: "/projects/TazkiyatiCover.png",
     description:
       "Tazkiyati is a personal spiritual web app built around the Islamic concept of purifying the heart. The name comes from the Arabic word تزكية, meaning self-purification.\n\nThe app centers around a 3D anatomical heart that visually reflects the state of your soul. Logging good deeds brightens it, while bad ones darken it, with each action carrying a weight based on its severity.\n\nI built the experience to feel minimal, calm, and intentional, with soft lighting, Arabic typography, and a single-page interface designed to encourage daily reflection and accountability.",
     shortDescription: "A spiritual tracker built around a 3D heart that visually reflects your soul's state through logged good and bad deeds, inspired by the Islamic concept of تزكية.",
