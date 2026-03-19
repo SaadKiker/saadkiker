@@ -156,6 +156,29 @@ const projects: Project[] = [
     modalBg: "#ffffff",
     modalAccent: "#f27971",
   },
+  {
+    id: "tazkiyati",
+    name: "Tazkiyati",
+    subtitle: "Islamic Heart Purity Tracker",
+    cover: "/projects/tazkiyatiCover.png",
+    description:
+      "Tazkiyati is a personal spiritual web app built around the Islamic concept of purifying the heart. The name comes from the Arabic word تزكية, meaning self-purification.\n\nThe app centers around a 3D anatomical heart that visually reflects the state of your soul. Logging good deeds brightens it, while bad ones darken it, with each action carrying a weight based on its severity.\n\nI built the experience to feel minimal, calm, and intentional, with soft lighting, Arabic typography, and a single-page interface designed to encourage daily reflection and accountability.",
+    shortDescription: "A spiritual tracker built around a 3D heart that visually reflects your soul's state through logged good and bad deeds, inspired by the Islamic concept of تزكية.",
+    createdOn: "Mar 19th, 2026",
+    link: "https://tazkiyati.vercel.app",
+    linkLabel: "tazkiyati.vercel.app",
+    images: [
+      "/projects/tazkiyati1.png",
+      "/projects/tazkiyati2.png",
+      "/projects/tazkiyati3.png",
+      "/projects/tazkiyati4.png",
+      "/projects/tazkiyati5.png",
+    ],
+    stack: ["Vite", "React", "Three.js", "React Three Fiber", "Tailwind CSS", "Supabase", "Vercel"],
+    mainStack: ["React", "Three.js", "Supabase"],
+    modalBg: "#ffffff",
+    modalAccent: "#000000",
+  },
 
 ];
 
