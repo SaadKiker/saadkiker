@@ -2,8 +2,8 @@
 @source "../";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F5F5F0;
+  --foreground: #1C1C1A;
 }
 
 @theme inline {
@@ -12,15 +12,9 @@
   --font-sans: var(--font-rubik);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-rubik), sans-serif;
 }
+

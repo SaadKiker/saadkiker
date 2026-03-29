@@ -17,7 +17,7 @@ const booksRead = [
 
 export default function Books() {
   return (
-    <div className="h-[100dvh] flex flex-col md:overflow-hidden" style={{ backgroundColor: "#f9e5bc" }}>
+    <div className="h-[100dvh] flex flex-col md:overflow-hidden" style={{ backgroundColor: "#F5F5F0" }}>
 
       <Header />
 
@@ -26,15 +26,15 @@ export default function Books() {
 
         {/* Left — Currently Reading */}
         <div className="flex-none md:flex-1 flex flex-col items-center justify-center gap-5 px-8 py-6 md:py-0">
-          <p className="text-2xl md:text-3xl font-bold text-center mb-4" style={{ color: "#6b4c1f" }}>
+          <p className="text-2xl md:text-3xl font-bold text-center mb-4" style={{ color: "#1C1C1A" }}>
             Currently Reading
           </p>
           <div
-            className="relative rounded-xl overflow-hidden shadow-md flex-shrink-0"
+            className="relative rounded-xl overflow-hidden shadow-sm flex-shrink-0"
             style={{
               width: "clamp(200px, 32vw, 380px)",
               aspectRatio: "2/3",
-              border: "2px solid #b5813c",
+              border: "1.5px solid #DEDEDB",
             }}
           >
             <Image
@@ -47,19 +47,18 @@ export default function Books() {
             />
           </div>
           <div className="text-center">
-            <p className="font-semibold text-stone-800 text-base md:text-lg leading-snug">
+            <p className="font-semibold text-base md:text-lg leading-snug" style={{ color: "#1C1C1A" }}>
               {currentlyReading.title}
             </p>
-            <p className="text-stone-500 text-sm md:text-base mt-0.5">
+            <p className="text-sm md:text-base mt-0.5" style={{ color: "#9A9A96" }}>
               {currentlyReading.author}
             </p>
           </div>
         </div>
 
-
         {/* Right — Books Read */}
         <div className="flex-none md:flex-1 flex flex-col md:overflow-hidden px-8 py-6 md:py-8">
-          <p className="text-2xl md:text-3xl font-bold text-center mb-12 flex-shrink-0" style={{ color: "#6b4c1f" }}>
+          <p className="text-2xl md:text-3xl font-bold text-center mb-12 flex-shrink-0" style={{ color: "#1C1C1A" }}>
             Read
           </p>
           <div className="md:overflow-y-auto md:flex-1 pr-1">
@@ -71,7 +70,7 @@ export default function Books() {
                     style={{
                       width: "clamp(140px, 20vw, 240px)",
                       aspectRatio: "2/3",
-                      border: "2px solid #b5813c",
+                      border: "1.5px solid #DEDEDB",
                     }}
                   >
                     <Image
@@ -83,10 +82,10 @@ export default function Books() {
                     />
                   </div>
                   <div>
-                    <p className="font-semibold text-stone-800 text-sm leading-snug">
+                    <p className="font-semibold text-sm leading-snug" style={{ color: "#1C1C1A" }}>
                       {book.title}
                     </p>
-                    <p className="text-stone-500 text-xs mt-0.5">
+                    <p className="text-xs mt-0.5" style={{ color: "#9A9A96" }}>
                       {book.author}
                     </p>
                   </div>
