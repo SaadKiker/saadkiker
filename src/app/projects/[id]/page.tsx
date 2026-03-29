@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { projects } from "../data";
 
@@ -12,6 +12,38 @@ export default function ProjectPage() {
   const [imageIndex, setImageIndex] = useState(0);
   const [fading, setFading] = useState(false);
   const [isFemale, setIsFemale] = useState(false);
+  const [mobilePreviewOpen, setMobilePreviewOpen] = useState(false);
+
+  const isMobileViewport = () =>
+    typeof window !== "undefined" && !window.matchMedia("(min-width: 768px)").matches;
+
+  useEffect(() => {
+    if (!mobilePreviewOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [mobilePreviewOpen]);
+
+  useEffect(() => {
+    if (!mobilePreviewOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobilePreviewOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mobilePreviewOpen]);
+
+  useEffect(() => {
+    if (!mobilePreviewOpen) return;
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onChange = () => {
+      if (mq.matches) setMobilePreviewOpen(false);
+    };
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, [mobilePreviewOpen]);
 
   if (!project) {
     return (
@@ -68,9 +100,9 @@ export default function ProjectPage() {
 
           {/* Title block */}
           <div className="mb-10">
-            <div className="mb-2">
+            <div className="mb-2 flex flex-col gap-3 items-start md:block">
               <h1
-                className="inline text-6xl md:text-7xl font-bold leading-none transition-colors duration-300"
+                className="block md:inline text-6xl md:text-7xl font-bold leading-none transition-colors duration-300"
                 style={{ color: accent }}
               >
                 {project.name}
@@ -81,12 +113,11 @@ export default function ProjectPage() {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 align-baseline ml-4"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 align-baseline ml-0 md:ml-4 translate-y-0 md:-translate-y-3"
                   style={{
                     color: accent,
                     border: `1.5px solid ${accent}`,
                     backgroundColor: `${accent}12`,
-                    transform: "translateY(-12px)",
                   }}
                   onMouseEnter={e => {
                     (e.currentTarget as HTMLAnchorElement).style.backgroundColor = `${accent}25`;
@@ -180,10 +211,14 @@ export default function ProjectPage() {
                 <img
                   src={activeImages[imageIndex]}
                   alt={`${project.name} screenshot ${imageIndex + 1}`}
-                  className="w-full block"
+                  className="w-full block cursor-pointer md:cursor-default"
                   style={{
                     opacity: fading ? 0 : 1,
                     transition: "opacity 0.18s ease",
+                  }}
+                  onClick={() => {
+                    if (!isMobileViewport()) return;
+                    setMobilePreviewOpen(true);
                   }}
                 />
 
@@ -239,6 +274,76 @@ export default function ProjectPage() {
 
         </div>
       </main>
+
+      {mobilePreviewOpen && activeImages.length > 0 && (
+        <div
+          className="fixed inset-0 z-[200] md:hidden flex flex-col bg-black/93"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Screenshot preview"
+          onClick={() => setMobilePreviewOpen(false)}
+        >
+          <div className="flex items-center justify-end px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-2 shrink-0">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setMobilePreviewOpen(false);
+              }}
+              className="flex h-11 min-w-11 items-center justify-center rounded-full text-2xl font-light leading-none text-white/90"
+              style={{ backgroundColor: "rgba(255,255,255,0.12)" }}
+              aria-label="Close preview"
+            >
+              ×
+            </button>
+          </div>
+
+          <div className="flex-1 flex items-center justify-center px-4 pb-6 min-h-0">
+            <img
+              src={activeImages[imageIndex]}
+              alt={`${project.name} screenshot ${imageIndex + 1} — full size`}
+              className="max-h-full max-w-full object-contain select-none"
+              draggable={false}
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+
+          {activeImages.length > 1 && (
+            <div
+              className="flex items-center justify-center gap-3 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] shrink-0"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prev();
+                }}
+                className="flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold text-white"
+                style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+                aria-label="Previous screenshot"
+              >
+                ‹
+              </button>
+              <span className="text-sm tabular-nums" style={{ color: "rgba(255,255,255,0.65)" }}>
+                {imageIndex + 1} / {activeImages.length}
+              </span>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  next();
+                }}
+                className="flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold text-white"
+                style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+                aria-label="Next screenshot"
+              >
+                ›
+              </button>
+            </div>
+          )}
+        </div>
+      )}
 
     </div>
   );

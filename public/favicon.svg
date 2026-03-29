@@ -1,4 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="50" fill="#f9e5bc"/>
-  <text x="50" y="68" font-family="Rubik, sans-serif" font-size="52" font-weight="700" fill="#b5813c" text-anchor="middle">sk</text>
+  <circle cx="50" cy="50" r="48" fill="#F5F5F0" stroke="#DEDEDB" stroke-width="2"/>
+  <text x="50" y="68" font-family="Rubik, sans-serif" font-size="52" font-weight="700" fill="#1C1C1A" text-anchor="middle">sk</text>
 </svg>
