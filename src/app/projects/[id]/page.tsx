@@ -73,12 +73,6 @@ export default function ProjectPage() {
     setImageIndex(0);
   };
 
-  // Adjacent image indices to preload
-  const len = activeImages.length;
-  const adjacentIndices = len > 1
-    ? [...new Set([(imageIndex + 1) % len, (imageIndex - 1 + len) % len])].filter(i => i !== imageIndex)
-    : [];
-
   return (
     <div className="h-screen flex flex-col overflow-hidden" style={{ backgroundColor: "#F5F5F0" }}>
 
@@ -206,41 +200,33 @@ export default function ProjectPage() {
                 className="relative rounded-2xl overflow-hidden"
                 style={{ boxShadow: "0 12px 48px rgba(0,0,0,0.09)" }}
               >
-                <Image
-                  key={activeImages[imageIndex]}
-                  src={activeImages[imageIndex]}
-                  alt={`${project.name} screenshot ${imageIndex + 1}`}
-                  width={3456}
-                  height={2164}
-                  priority={imageIndex === 0}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 84vw, 72vw"
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    display: "block",
-                    animation: "galleryFadeIn 0.15s ease",
-                  }}
-                  className="cursor-pointer md:cursor-default"
-                  onClick={() => {
-                    if (!isMobileViewport()) return;
-                    setMobilePreviewOpen(true);
-                  }}
-                />
-
-                {/* Hidden preload for adjacent images */}
-                <div style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", opacity: 0 }} aria-hidden="true">
-                  {adjacentIndices.map((i) => (
-                    <Image
-                      key={activeImages[i]}
-                      src={activeImages[i]}
-                      alt=""
-                      width={3456}
-                      height={2164}
-                      priority
-                      sizes="1px"
-                    />
-                  ))}
-                </div>
+                {activeImages.map((src, i) => (
+                  <Image
+                    key={src}
+                    src={src}
+                    alt={`${project.name} screenshot ${i + 1}`}
+                    width={3456}
+                    height={2164}
+                    priority={i === 0}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 84vw, 72vw"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      display: "block",
+                      position: i === 0 ? "relative" : "absolute",
+                      top: 0,
+                      left: 0,
+                      opacity: i === imageIndex ? 1 : 0,
+                      transition: "opacity 0.3s ease",
+                      pointerEvents: i === imageIndex ? "auto" : "none",
+                    }}
+                    className="cursor-pointer md:cursor-default"
+                    onClick={() => {
+                      if (!isMobileViewport()) return;
+                      setMobilePreviewOpen(true);
+                    }}
+                  />
+                ))}
 
                 {activeImages.length > 1 && (
                   <>
@@ -318,27 +304,32 @@ export default function ProjectPage() {
             </button>
           </div>
 
-          <div className="flex-1 flex items-center justify-center px-4 pb-6 min-h-0">
-            <Image
-              key={`modal-${activeImages[imageIndex]}`}
-              src={activeImages[imageIndex]}
-              alt={`${project.name} screenshot ${imageIndex + 1} — full size`}
-              width={3456}
-              height={2164}
-              priority
-              sizes="100vw"
-              style={{
-                maxHeight: "100%",
-                maxWidth: "100%",
-                width: "auto",
-                height: "auto",
-                objectFit: "contain",
-                userSelect: "none",
-                animation: "galleryFadeIn 0.15s ease",
-              }}
-              draggable={false}
-              onClick={(e) => e.stopPropagation()}
-            />
+          <div className="flex-1 relative flex items-center justify-center px-4 pb-6 min-h-0">
+            {activeImages.map((src, i) => (
+              <Image
+                key={src}
+                src={src}
+                alt={`${project.name} screenshot ${i + 1} — full size`}
+                width={3456}
+                height={2164}
+                priority={i === 0}
+                sizes="100vw"
+                style={{
+                  maxHeight: "100%",
+                  maxWidth: "100%",
+                  width: "auto",
+                  height: "auto",
+                  objectFit: "contain",
+                  userSelect: "none",
+                  position: i === 0 ? "relative" : "absolute",
+                  opacity: i === imageIndex ? 1 : 0,
+                  transition: "opacity 0.3s ease",
+                  pointerEvents: i === imageIndex ? "auto" : "none",
+                }}
+                draggable={false}
+                onClick={(e) => e.stopPropagation()}
+              />
+            ))}
           </div>
 
           {activeImages.length > 1 && (

@@ -259,5 +259,27 @@ export const projects: Project[] = [
     modalBg: "#ffffff",
     modalAccent: "#e8af10",
   },
- 
+  {
+    id: "optique-hamza",
+    name: "Optique Hamza",
+    subtitle: "Independent Optician Website",
+    cover: "/projects/OHCover.png",
+    description:
+      "Optique Hamza is a website built for an independent optician with over 15 years of experience, designed to present their services and welcome new clients online.\n\nThe site covers their full range of offerings including comprehensive vision assessments, single-vision and progressive lenses, blue-light filtering treatments, and a curated frame selection from trusted designers.\n\nA key focus of the experience is personalization — clients work with the same consultant throughout their entire journey, from face shape analysis to pupillary distance measurement and post-purchase follow-up. The site also features an appointment booking flow and a promotional offer for new customers.",
+    shortDescription: "A professional website for an independent optician, showcasing vision care services, lens options, frame selection, and an appointment booking flow for new and returning clients.",
+    createdOn: "2025",
+    link: "https://lightslategray-crocodile-442228.hostingersite.com/index.html",
+    linkLabel: "optiquehamza.com",
+    images: [
+      "/projects/OH1.png",
+      "/projects/OH2.png",
+      "/projects/OH3.png",
+      "/projects/OH4.png",
+    ],
+    stack: ["HTML", "CSS", "JavaScript", "Hostinger"],
+    mainStack: ["HTML", "CSS", "JavaScript"],
+    modalBg: "#ffffff",
+    modalAccent: "#8e3030",
+    category: "website",
+  },
 ];
