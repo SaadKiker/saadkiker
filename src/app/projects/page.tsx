@@ -11,7 +11,7 @@ const websites = projects.filter((p) => p.category === "website");
 function ProjectGrid({ items }: { items: Project[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {items.map((project) => (
+      {items.map((project, index) => (
         <Link
           key={project.id}
           href={`/projects/${project.id}`}
@@ -36,7 +36,7 @@ function ProjectGrid({ items }: { items: Project[] }) {
               src={project.cover}
               alt={project.name}
               fill
-              priority
+              priority={index < 3}
               sizes="(max-width: 768px) 100vw, 33vw"
               className="object-cover"
             />

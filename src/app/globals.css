@@ -18,3 +18,8 @@ body {
   font-family: var(--font-rubik), sans-serif;
 }
 
+@keyframes galleryFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+

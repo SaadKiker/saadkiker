@@ -2,6 +2,7 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { projects } from "../data";
@@ -10,7 +11,6 @@ export default function ProjectPage() {
   const { id } = useParams();
   const project = projects.find((p) => p.id === id);
   const [imageIndex, setImageIndex] = useState(0);
-  const [fading, setFading] = useState(false);
   const [isFemale, setIsFemale] = useState(false);
   const [mobilePreviewOpen, setMobilePreviewOpen] = useState(false);
 
@@ -61,11 +61,7 @@ export default function ProjectPage() {
   const accent = (hasThemeToggle && isFemale ? project.altAccent : project.modalAccent) ?? "#1C1C1A";
 
   const navigate = (getNext: (i: number, len: number) => number) => {
-    setFading(true);
-    setTimeout(() => {
-      setImageIndex((i) => getNext(i, activeImages.length));
-      setFading(false);
-    }, 180);
+    setImageIndex((i) => getNext(i, activeImages.length));
   };
 
   const prev = () => navigate((i, len) => (i - 1 + len) % len);
@@ -73,13 +69,15 @@ export default function ProjectPage() {
 
   const handleThemeToggle = (female: boolean) => {
     if (female === isFemale) return;
-    setFading(true);
-    setTimeout(() => {
-      setIsFemale(female);
-      setImageIndex(0);
-      setFading(false);
-    }, 180);
+    setIsFemale(female);
+    setImageIndex(0);
   };
+
+  // Adjacent image indices to preload
+  const len = activeImages.length;
+  const adjacentIndices = len > 1
+    ? [...new Set([(imageIndex + 1) % len, (imageIndex - 1 + len) % len])].filter(i => i !== imageIndex)
+    : [];
 
   return (
     <div className="h-screen flex flex-col overflow-hidden" style={{ backgroundColor: "#F5F5F0" }}>
@@ -208,19 +206,41 @@ export default function ProjectPage() {
                 className="relative rounded-2xl overflow-hidden"
                 style={{ boxShadow: "0 12px 48px rgba(0,0,0,0.09)" }}
               >
-                <img
+                <Image
+                  key={activeImages[imageIndex]}
                   src={activeImages[imageIndex]}
                   alt={`${project.name} screenshot ${imageIndex + 1}`}
-                  className="w-full block cursor-pointer md:cursor-default"
+                  width={3456}
+                  height={2164}
+                  priority={imageIndex === 0}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 84vw, 72vw"
                   style={{
-                    opacity: fading ? 0 : 1,
-                    transition: "opacity 0.18s ease",
+                    width: "100%",
+                    height: "auto",
+                    display: "block",
+                    animation: "galleryFadeIn 0.15s ease",
                   }}
+                  className="cursor-pointer md:cursor-default"
                   onClick={() => {
                     if (!isMobileViewport()) return;
                     setMobilePreviewOpen(true);
                   }}
                 />
+
+                {/* Hidden preload for adjacent images */}
+                <div style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", opacity: 0 }} aria-hidden="true">
+                  {adjacentIndices.map((i) => (
+                    <Image
+                      key={activeImages[i]}
+                      src={activeImages[i]}
+                      alt=""
+                      width={3456}
+                      height={2164}
+                      priority
+                      sizes="1px"
+                    />
+                  ))}
+                </div>
 
                 {activeImages.length > 1 && (
                   <>
@@ -299,10 +319,23 @@ export default function ProjectPage() {
           </div>
 
           <div className="flex-1 flex items-center justify-center px-4 pb-6 min-h-0">
-            <img
+            <Image
+              key={`modal-${activeImages[imageIndex]}`}
               src={activeImages[imageIndex]}
               alt={`${project.name} screenshot ${imageIndex + 1} — full size`}
-              className="max-h-full max-w-full object-contain select-none"
+              width={3456}
+              height={2164}
+              priority
+              sizes="100vw"
+              style={{
+                maxHeight: "100%",
+                maxWidth: "100%",
+                width: "auto",
+                height: "auto",
+                objectFit: "contain",
+                userSelect: "none",
+                animation: "galleryFadeIn 0.15s ease",
+              }}
               draggable={false}
               onClick={(e) => e.stopPropagation()}
             />
