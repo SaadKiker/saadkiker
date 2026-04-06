@@ -5,6 +5,7 @@ const currentlyReading = {
   title: "$100M Leads",
   author: "Alex Hormozi",
   cover: "/books/100m-leads.jpg",
+  notesUrl: "https://docs.google.com/document/d/1ko97JUjJbOciu2zHJ6pNHz-qD5siOvzhrBgSs0GA5QA/edit?usp=sharing",
 };
 
 const booksRead = [
@@ -45,6 +46,24 @@ export default function Books() {
               sizes="(max-width: 768px) 200px, 32vw"
               className="object-cover"
             />
+            {currentlyReading.notesUrl && (
+              <a
+                href={currentlyReading.notesUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-2 left-2 flex items-center justify-center w-7 h-7 rounded-md transition-opacity hover:opacity-80"
+                style={{ backgroundColor: "rgba(255,255,255,0.85)", backdropFilter: "blur(4px)" }}
+                title="My notes"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C1C1A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                  <polyline points="10 9 9 9 8 9"/>
+                </svg>
+              </a>
+            )}
           </div>
           <div className="text-center">
             <p className="font-semibold text-base md:text-lg leading-snug" style={{ color: "#1C1C1A" }}>
@@ -80,6 +99,24 @@ export default function Books() {
                       sizes="(max-width: 768px) 140px, 20vw"
                       className="object-cover"
                     />
+                    {book.notesUrl && (
+                      <a
+                        href={book.notesUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute top-2 left-2 flex items-center justify-center w-6 h-6 rounded-md transition-opacity hover:opacity-80"
+                        style={{ backgroundColor: "rgba(255,255,255,0.85)", backdropFilter: "blur(4px)" }}
+                        title="My notes"
+                      >
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1C1C1A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                          <polyline points="14 2 14 8 20 8"/>
+                          <line x1="16" y1="13" x2="8" y2="13"/>
+                          <line x1="16" y1="17" x2="8" y2="17"/>
+                          <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                      </a>
+                    )}
                   </div>
                   <div>
                     <p className="font-semibold text-sm leading-snug" style={{ color: "#1C1C1A" }}>
