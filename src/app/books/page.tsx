@@ -8,7 +8,7 @@ const currentlyReading = {
   notesUrl: "https://docs.google.com/document/d/1ko97JUjJbOciu2zHJ6pNHz-qD5siOvzhrBgSs0GA5QA/edit?usp=sharing",
 };
 
-const booksRead = [
+const booksRead: { title: string; author: string; cover: string; notesUrl?: string }[] = [
   {
     title: "Cold Email Manifesto",
     author: "Alex Berman & Robert Indries",

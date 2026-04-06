@@ -26,7 +26,7 @@ export const projects: Project[] = [
     cover: "/projects/scaniniCover.png",
     description:
 "Scanini came from time I spent in Turkey, where every restaurant, café and hotel had a QR menu sitting on the table. You'd sit down, scan, and just browse. I found myself reaching for it every single time over the physical menu without even thinking about it. Came back to Morocco and realised it hadn't really taken off here yet, so I built Scanini.\n\nIt's a SaaS platform that gives any business (restaurants, cafés, hotels, car dealerships, flower shops) a fully managed digital menu or catalogue, accessible via QR code. Each client gets their own subdomain, something like mybusiness.scanini.ma, that they can drop anywhere: Instagram bio, Google Maps, WhatsApp, a physical stand at the entrance. Customers see the full menu before they walk in.\n\nFrom the owner's side, everything is managed through a clean dashboard. Update items, swap photos, reorganize sections, all from their phone in real time. No waiting for a designer, no reprinting costs. And built into the menu is a direct Google Reviews button, so customers can leave a review in one tap right after their visit.\n\nI built the whole thing end to end: the public-facing menu that customers interact with, the admin dashboard owners use daily, and a multi-tenant backend designed to scale cleanly across hundreds of businesses. Every layer of the stack, handled solo.\n\nIt's live, it has paying clients, and it's still growing.",
-    shortDescription: "A SaaS platform for restaurants to manage digital menus, online ordering, and business configuration through a public menu and a secure admin dashboard.",
+    shortDescription: "A SaaS platform that gives any business a digital menu accessible via QR code, with a branded subdomain, real-time editing, and a built-in Google Reviews button.",
     createdOn: "Jan 1st, 2026",
     link: "https://scanini.ma",
     linkLabel: "scanini.ma",
@@ -49,7 +49,7 @@ export const projects: Project[] = [
     cover: "/projects/MyritualsCover.png",
     description: 
 "Most habit trackers try to do too much. Streaks, analytics, reminders, integrations, social features. By the time you set everything up you've already lost the plot. I tried a bunch of them and kept running into the same problem: the app itself became the thing I had to manage.\n\nSo I built MyRituals. Started as a single HTML file I'd open locally every morning. No backend, no accounts, just a clean page with my habits and goals for the day. It did exactly what I needed and nothing else, so I kept using it.\n\nEventually I cleaned it up, gave it a real backend, and hosted it for friends and family who wanted in.\n\nIt's built around three things: habits, goals, and a structured daily schedule. The interface stays out of your way. No notifications pushing you, no dashboards overwhelming you, no features you have to learn. You open it, you check your things, you close it.\n\nThat's the whole idea.",
-    shortDescription: "A minimal habit and ritual tracker built around three areas — goals, habits, and a daily schedule — with a distraction-free interface built for consistency.",
+    shortDescription: "A minimal habit and ritual tracker for people who found every other app too overwhelming. Built around three things only: habits, goals, and a daily schedule.",
     createdOn: "Jan 31st, 2026",
     link: "https://myrituals.app",
     linkLabel: "MyRituals.app",
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     cover: "/projects/hdocCover.png",
     description:
 "H-DOC came out of my final year internship at a hospital that was still in its construction phase. The place was getting ready to operate as a central hub connected to a network of satellite care centers handling non-urgent cases, so patients get triaged and treated at the right level without everything funneling into the main hospital. The infrastructure was being built, but there was no internal system to run it on.\n\nSo I built one.\n\nH-DOC is a full stack patient and medical record management platform designed for clinics and care centers. Everything that happens around a patient visit lives in one place: registration, appointments, prescriptions, medical forms, doctor assignments, and a live dashboard tracking visits and metrics across the day.\n\nThe system has role based access for administrators, doctors, and agents, each seeing exactly what they need and nothing they don't. The goal was to reduce paperwork, centralize records, and make patient flow manageable from a single screen.\n\nBuilt with a Spring Boot backend running in Docker, a PostgreSQL database on Supabase, and a React and TypeScript frontend.",
-    shortDescription: "A full-stack platform for clinics to manage patient records, appointments, and prescriptions, with role-based access for admins, doctors, and agents.",
+    shortDescription: "A full-stack patient management system built for clinics and care centers, covering appointments, prescriptions, medical forms and real-time visit tracking, with role-based access for admins, doctors and agents.",
     createdOn: "Feb 15th, 2026",
     link: "https://github.com/SaadKiker/H-DOC",
     linkLabel: "GitHub Repository",
@@ -115,7 +115,7 @@ export const projects: Project[] = [
     cover: "/projects/sacrosCover.png",
     description:
 "Every macro tracking app I tried was either behind a paywall, bloated with features I didn't need, or both. All I wanted was to log what I ate and see my numbers for the day. Simple as that.\n\nSo I built Sacros. A minimal offline desktop app that does exactly that and nothing else. You log your meals, it calculates your protein, carbs, fats and calories. No account, no internet, no history trying to guilt trip you about last week. Just today.\n\nYou build your own food database with your usual meals and ingredients, log them across breakfast, lunch, snacks and dinner, and the numbers update instantly. That's the whole app.\n\nBuilt with Tauri and React so it runs as a native desktop app, fully offline.",
-    shortDescription: "An offline desktop app for tracking daily macros and calories across meals, with a personal food database and no accounts or internet required.",
+    shortDescription: "A minimal offline desktop app for tracking daily macros across meals. Personal food database, auto-calculated totals, no accounts, no internet, no noise.",
     createdOn: "Mar 10th, 2026",
     link: "https://sacros-site.vercel.app",
     linkLabel: "sacros-site.vercel.app",
@@ -142,7 +142,7 @@ export const projects: Project[] = [
     cover: "/projects/cookshareCover.png",
     description:
 "CookShare was a fourth year academic project, and the brief was simple: build a community platform where users can share and discover recipes. Not the most groundbreaking idea, but a good opportunity to go deeper into Spring Boot.\n\nUsers can create an account, post their own recipes, browse by category, like and comment on what others share, and save their favorites. Everything you'd expect from a platform like this, built from scratch with a Spring Boot backend, Thymeleaf for server rendered pages, and MySQL.\n\nIt was less about the idea and more about learning how to structure a real multi-user web application with authentication, role based access, and a proper database layer.",
-    shortDescription: "A community recipe platform where users can publish their own recipes, discover meals from others, and interact through likes, comments, and favorites.",
+    shortDescription: "A community platform where users can publish their own recipes, browse and discover meals from others, and interact through likes, comments and favorites.",
     createdOn: "Dec 12th, 2025",
     link: "https://github.com/SaadKiker/CookShare",
     linkLabel: "GitHub Repository",
@@ -197,7 +197,7 @@ export const projects: Project[] = [
     cover: "/projects/TazkiyatiCover.png",
     description:
 "Tazkiyati started from a simple idea rooted in Islamic tradition: the state of your heart reflects the deeds you do. Good actions purify it, bad ones darken it. That concept has existed for centuries, but I wanted to make it something you could actually see and interact with daily.\n\nAt the center of the app is a 3D anatomical heart that visually responds to what you log. You record a good deed, it brightens. You log a bad one, it darkens, with each action carrying a different weight depending on its severity. No streaks, no points, no gamification. Just you and the state of your heart.\n\nThe whole experience is built to feel calm and intentional. Soft lighting, Arabic typography, a single page that doesn't ask much of you. You open it, you reflect, you log, you close it.\n\nBuilt with React, Three.js for the 3D heart, and Supabase on the backend.",
-    shortDescription: "A spiritual tracker built around a 3D heart that visually reflects your soul's state through logged good and bad deeds, inspired by the Islamic concept of تزكية.",
+    shortDescription: "A spiritual tracker built around a 3D heart that visually reflects your deeds. Good actions brighten it, bad ones darken it. Inspired by the Islamic concept of تزكية.",
     createdOn: "Mar 19th, 2026",
     link: "https://tazkiyati.vercel.app",
     linkLabel: "tazkiyati.vercel.app",
@@ -243,7 +243,7 @@ export const projects: Project[] = [
     cover: "/projects/rwCover.png",
     description:
 "RentWheels was a third year academic project, built with Java Swing as a desktop application for a car rental agency.\n\nThe app handles the full rental flow across three types of users. Visitors can browse the car catalogue and filter by model, color and availability. Clients can create an account, pick a car, set their dates, and the price gets calculated automatically. Once a reservation is submitted it goes to the admin for approval, and when validated the car switches to unavailable across the catalogue instantly.\n\nThe admin side is where most of the complexity sits: managing the catalogue, approving or rejecting reservations, handling accounts, moderating comments, and a dashboard with revenue charts and vehicle availability breakdowns.\n\nIt was less about the idea and more about learning how to architect a multi-role system with real business logic from scratch, in a desktop environment with Java Swing and MySQL.",
-    shortDescription: "A desktop car rental management app built with Java Swing, supporting visitor, client, and admin roles with full reservation management, automated pricing, and a Chart Insights dashboard.",
+    shortDescription: "A desktop car rental management app built for agencies, handling the full rental flow across three user roles: visitors browsing the catalogue, clients making reservations, and admins managing everything.",
     createdOn: "2025",
     link: "https://github.com/SaadKiker/RentWheels",
     linkLabel: "GitHub Repository",
