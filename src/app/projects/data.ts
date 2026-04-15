@@ -296,7 +296,6 @@ export const projects: Project[] = [
     images: [
       "/projects/faceb1.png",
       "/projects/faceb2.png",
-      "/projects/faceb3.png",
     ],
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     mainStack: ["Next.js", "TypeScript", "Vercel"],
