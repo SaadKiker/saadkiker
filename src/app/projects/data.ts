@@ -282,4 +282,26 @@ export const projects: Project[] = [
     modalAccent: "#8e3030",
     category: "website",
   },
+  {
+    id: "faceburger",
+    name: "FaceBurger",
+    subtitle: "Restaurant Digital Menu & Online Ordering",
+    cover: "/projects/fbcover.png",
+    description:
+"FaceBurger is a digital menu and online ordering website built for a local fast-food brand. The goal was to make the full menu easy to browse on mobile, with clear categories, item details, and pricing that customers can access instantly.\n\nThe experience is designed to be simple and fast: users land on the menu, browse by section, and add items without friction. It helps the business present its products professionally online while reducing the dependency on static printed menus.\n\nBuilt and launched at faceburger.ma.",
+    shortDescription: "A restaurant digital menu and online ordering website with clear sections, pricing, and a mobile-first browsing experience.",
+    createdOn: "2026",
+    link: "https://faceburger.ma",
+    linkLabel: "faceburger.ma",
+    images: [
+      "/projects/faceb1.png",
+      "/projects/faceb2.png",
+      "/projects/faceb3.png",
+    ],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    mainStack: ["Next.js", "TypeScript", "Vercel"],
+    modalBg: "#ffffff",
+    modalAccent: "#1877F2",
+    category: "app",
+  },
 ];
