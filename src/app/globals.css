@@ -18,3 +18,151 @@ body {
   font-family: var(--font-rubik), sans-serif;
 }
 
+/* --- 3D book covers (books page) --- */
+
+.book-wrap {
+  perspective: 1200px;
+}
+
+.book {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(-12deg);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: drop-shadow(10px 14px 18px rgba(28, 28, 26, 0.28));
+}
+
+.book-wrap:hover .book {
+  transform: rotateY(-3deg) translateY(-8px) scale(1.015);
+  filter: drop-shadow(6px 22px 28px rgba(28, 28, 26, 0.32));
+}
+
+/* Page edges along the right side */
+.book::after {
+  content: "";
+  position: absolute;
+  top: 1.5%;
+  left: 100%;
+  width: 26px;
+  height: 97%;
+  transform: translateX(-13px) rotateY(84deg);
+  background: repeating-linear-gradient(
+    to bottom,
+    #ffffff 0px,
+    #ffffff 2px,
+    #e6e6e0 2px,
+    #e6e6e0 3px
+  );
+  border-radius: 0 2px 2px 0;
+}
+
+/* Cover face sits in front of the pages */
+.book-cover {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px 10px 10px 3px;
+  border: 1.5px solid #DEDEDB;
+  transform: translateZ(1px);
+}
+
+/* Spine crease: subtle vertical light/shadow near the binding */
+.book-cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(28, 28, 26, 0.18) 0%,
+    rgba(255, 255, 255, 0.25) 2.5%,
+    rgba(28, 28, 26, 0.1) 5%,
+    rgba(28, 28, 26, 0) 8%
+  );
+}
+
+/* Soft sheen that sweeps on hover */
+.book-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 60%
+  );
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  transition: background-position 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.book-wrap:hover .book-cover::after {
+  background-position: 0 0;
+}
+
+/* "My notes" thought cloud floating off the top-left of the cover */
+@keyframes cloud-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.notes-cloud {
+  position: absolute;
+  top: -26px;
+  left: -20px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 15px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  color: #1c1c1a;
+  background: #fffdf7;
+  border: 1.5px solid #dedede;
+  box-shadow: 0 4px 14px rgba(28, 28, 26, 0.14);
+  animation: cloud-bob 3.4s ease-in-out infinite;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Trailing thought dots, drifting down toward the book */
+.notes-cloud .cloud-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: #fffdf7;
+  border: 1.5px solid #dedede;
+  box-shadow: 0 2px 6px rgba(28, 28, 26, 0.12);
+  width: 8px;
+  height: 8px;
+  bottom: -10px;
+  right: 12px;
+}
+
+.notes-cloud .cloud-dot + .cloud-dot {
+  width: 5px;
+  height: 5px;
+  bottom: -18px;
+  right: 6px;
+}
+
+.notes-cloud:hover {
+  animation-play-state: paused;
+  transform: scale(1.08) rotate(-3deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book,
+  .book-cover::after,
+  .notes-cloud {
+    transition: none;
+    animation: none;
+  }
+}
+

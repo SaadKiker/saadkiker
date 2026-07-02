@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Rubik } from "next/font/google";
 import "./globals.css";
-import ParticleField from "./components/ParticleField";
+import NeedleField from "./components/NeedleField";
 
 const rubik = Rubik({
   subsets: ["latin"],
@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${rubik.variable} font-[family-name:var(--font-rubik)] antialiased`}>
-        <ParticleField />
+        <NeedleField />
         {children}
       </body>
     </html>
