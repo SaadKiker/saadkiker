@@ -109,33 +109,6 @@ export const projects: Project[] = [
     modalAccent: "#1e513b",
   },
   {
-    id: "sacros",
-    name: "Sacros",
-    subtitle: "Offline Macro Nutrition Tracker",
-    cover: "/projects/sacrosCover.png",
-    description:
-"Every macro tracking app I tried was either behind a paywall, bloated with features I didn't need, or both. All I wanted was to log what I ate and see my numbers for the day. Simple as that.\n\nSo I built Sacros. A minimal offline desktop app that does exactly that and nothing else. You log your meals, it calculates your protein, carbs, fats and calories. No account, no internet, no history trying to guilt trip you about last week. Just today.\n\nYou build your own food database with your usual meals and ingredients, log them across breakfast, lunch, snacks and dinner, and the numbers update instantly. That's the whole app.\n\nBuilt with Tauri and React so it runs as a native desktop app, fully offline.",
-    shortDescription: "A minimal offline desktop app for tracking daily macros across meals. Personal food database, auto-calculated totals, no accounts, no internet, no noise.",
-    createdOn: "Mar 10th, 2026",
-    link: "https://sacros-site.vercel.app",
-    linkLabel: "sacros-site.vercel.app",
-    images: [
-      "/projects/sacros1.png",
-      "/projects/sacros2.png",
-      "/projects/sacros3.png"
-    ],
-    stack: [
-      "Tauri",
-      "Rust",
-      "React",
-      "TypeScript",
-      "Tailwind CSS"
-    ],
-    mainStack: ["Tauri", "Rust", "React"],
-    modalBg: "#ffffff",
-    modalAccent: "#4f6c9f",
-  },
-  {
     id: "cookshare",
     name: "CookShare",
     subtitle: "Community Recipe Sharing Platform",
